@@ -1,0 +1,211 @@
+1) Посмотреть где я
+pwd
+/d/Рабочая папка
+
+2) Создать папку
+mkdir 30_QA_Group
+
+3) Зайти в папку
+cd 30_QA_Group
+
+4) Создать 3 папки
+mkdir QA1 QA2 QA3
+
+5) Зайти в любоую папку
+cd QA1
+
+6) Создать 5 файлов (3 txt, 2 json)
+touch q1.txt q2.txt q3.txt q4.json q5.json
+
+7) Создать 3 папки
+mkdir QQ1 QQ2 QQ3
+
+8. Вывести список содержимого папки
+ls -la
+total 4
+drwxr-xr-x 1 ju6ki 197609 0 May 25 23:37 ./
+drwxr-xr-x 1 ju6ki 197609 0 May 25 23:34 ../
+drwxr-xr-x 1 ju6ki 197609 0 May 25 23:37 QQ1/
+drwxr-xr-x 1 ju6ki 197609 0 May 25 23:37 QQ2/
+drwxr-xr-x 1 ju6ki 197609 0 May 25 23:37 QQ3/
+-rw-r--r-- 1 ju6ki 197609 0 May 25 23:36 q1.txt
+-rw-r--r-- 1 ju6ki 197609 0 May 25 23:36 q2.txt
+-rw-r--r-- 1 ju6ki 197609 0 May 25 23:36 q3.txt
+-rw-r--r-- 1 ju6ki 197609 0 May 25 23:36 q4.json
+-rw-r--r-- 1 ju6ki 197609 0 May 25 23:36 q5.json
+
+9) + Открыть любой txt файл
+vim q1.txt
+
+10) + написать туда что-нибудь, любой текст.
+i
+Hello!
+Let`s test!
+
+123456789
+qwer
+qwee
+asdd
+zxccv
+456789
+;lkjhfdds
+ f ffgkhghjg
+ 7956533
+ iiiiiiiii
+
+
+11) + сохранить и выйти.
+Esc
+:wq + Enter
+
+12) Выйти из папки на уровень выше
+cd ../
+
+—
+13) переместить любые 2 файла, которые вы создали, в любую другую папку.
+mv QA1/q1.txt QA2/q1.txt
+mv QA1/q2.txt QA2/q2.txt
+
+14) скопировать любые 2 файла, которые вы создали, в любую другую папку.
+cp QA1/q3.txt QA3/q3.txt
+cp QA1/q4.json QA2/q4.json
+
+15) Найти файл по имени
+find . -name "q1.txt"
+./QA2/q1.txt
+
+16) просмотреть содержимое в реальном времени (команда grep) изучите как она работает.
+tail -f q1.txt
+123456789
+qwer
+qwee
+asdd
+zxccv
+456789
+;lkjhfdds
+ f ffgkhghjg
+ 7956533
+ iiiiiiiii
+
+tail -f q1.txt | grep qwee
+qwee
+
+
+17) вывести несколько первых строк из текстового файла
+head -4 q1.txt
+Hello!
+Let`s test!
+
+123456789
+
+18) вывести несколько последних строк из текстового файла
+tail -n3 q1.txt
+ f ffgkhghjg
+ 7956533
+ iiiiiiiii
+
+19) просмотреть содеримое длинного файла (команда less) изучите как она работает.
+less q1.txt
+
+Hello!
+Let`s test!
+
+123456789
+qwer
+qwee
+asdd
+zxccv
+456789
+;lkjhfdds
+ f ffgkhghjg
+ 7956533
+ iiiiiiiii
+q1.txt (END)
+
+q
+
+
+20) вывести дату и время
+date
+Sat May 28 21:47:14 RTZ 2022
+
+
+Задание *
+1) Отправить http запрос на сервер.
+http://162.55.220.72:5005/terminal-hw-request
+
+curl http://162.55.220.72:5005/terminal-hw-request
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   283  100   283    0     0   3647      0 --:--:-- --:--:-- --:--:--  3723{
+  "Intro": "Hello!! This is your the first response from server",
+  "Tasks": {
+    "Task_1": "Send the next URL in terminal: http://162.55.220.72:5005/get_method?name=(set_your_String)&age=(set_your_number)",
+    "result": [
+      "Your_String",
+      "Your_number"
+    ]
+  }
+}
+
+curl "http://162.55.220.72:5005/get_method?name=Julia&age=32"
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:--  0:00:02 --:--:--     0
+curl: (7) Failed to connect to 162.55.220.72 port 5005 after 2218 ms: Connection refused
+
+
+
+2) Написать скрипт который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13
+nano myscript.sh
+
+#!/bin/bash
+
+echo "Зайти в папку"
+cd 30_QA_Group
+
+echo "Создать 3 папки"
+mkdir QA1 QA2 QA3
+
+echo "Зайти в любую папку"
+cd QA1
+
+echo "Создать 5 файлов (3 txt, 2 json)"
+touch q1.txt q2.txt q3.txt q4.json q5.json
+
+echo "Создать 3 папки"
+mkdir QQ1 QQ2 QQ3
+
+ls -la
+cd ../
+
+echo "переместить любые 2 файла, которые вы создали, в любую другую папку"
+mv QA1/q1.txt QA2/q1.txt
+mv QA1/q2.txt QA2/q2.txt
+
+echo "Done"
+
+Ctrl+O
+Enter
+Ctrl+X
+
+$ bash myscript.sh
+Зайти в папку
+Создать 3 папки
+Зайти в любую папку
+Создать 5 файлов (3 txt, 2 json)
+Создать 3 папки
+total 4
+drwxr-xr-x 1 ju6ki 197609 0 May 29 00:09 .
+drwxr-xr-x 1 ju6ki 197609 0 May 29 00:09 ..
+drwxr-xr-x 1 ju6ki 197609 0 May 29 00:09 QQ1
+drwxr-xr-x 1 ju6ki 197609 0 May 29 00:09 QQ2
+drwxr-xr-x 1 ju6ki 197609 0 May 29 00:09 QQ3
+-rw-r--r-- 1 ju6ki 197609 0 May 29 00:09 q1.txt
+-rw-r--r-- 1 ju6ki 197609 0 May 29 00:09 q2.txt
+-rw-r--r-- 1 ju6ki 197609 0 May 29 00:09 q3.txt
+-rw-r--r-- 1 ju6ki 197609 0 May 29 00:09 q4.json
+-rw-r--r-- 1 ju6ki 197609 0 May 29 00:09 q5.json
+переместить любые 2 файла, которые вы создали, в любую другую папку
+Done
+
